@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -19,14 +20,14 @@ import redis.clients.jedis.Jedis;
 public class WikiSearch {
 	
 	// map from URLs that contain the term(s) to relevance score
-	private Map<String, Integer> map;
+	private Map<String, Double> map;
 
 	/**
 	 * Constructor.
 	 * 
 	 * @param map
 	 */
-	public WikiSearch(Map<String, Integer> map) {
+	public WikiSearch(Map<String, Double> map) {
 		this.map = map;
 	}
 	
@@ -36,8 +37,8 @@ public class WikiSearch {
 	 * @param url
 	 * @return
 	 */
-	public Integer getRelevance(String url) {
-		Integer relevance = map.get(url);
+	public Double getRelevance(String url) {
+		Double relevance = map.get(url);
 		return relevance==null ? 0: relevance;
 	}
 	
@@ -47,8 +48,8 @@ public class WikiSearch {
 	 * @param map
 	 */
 	private  void print() {
-		List<Entry<String, Integer>> entries = sort();
-		for (Entry<String, Integer> entry: entries) {
+		List<Entry<String, Double>> entries = sort();
+		for (Entry<String, Double> entry: entries) {
 			System.out.println(entry);
 		}
 	}
@@ -60,9 +61,9 @@ public class WikiSearch {
 	 * @return New WikiSearch object.
 	 */
 	public WikiSearch or(WikiSearch that) {
-		Map<String, Integer> union = new HashMap<String, Integer>(map);
+		Map<String, Double> union = new HashMap<String, Double>(map);
 		for (String term: that.map.keySet()) {
-			int relevance = totalRelevance(this.getRelevance(term), that.getRelevance(term));
+			double relevance = totalRelevance(this.getRelevance(term), that.getRelevance(term));
 			union.put(term, relevance);
 		}
 		return new WikiSearch(union);
@@ -75,10 +76,10 @@ public class WikiSearch {
 	 * @return New WikiSearch object.
 	 */
 	public WikiSearch and(WikiSearch that) {
-		Map<String, Integer> intersection = new HashMap<String, Integer>();
+		Map<String, Double> intersection = new HashMap<String, Double>();
 		for (String term: map.keySet()) {
 			if (that.map.containsKey(term)) {
-				int relevance = totalRelevance(this.map.get(term), that.map.get(term));
+				double relevance = totalRelevance(this.map.get(term), that.map.get(term));
 				intersection.put(term, relevance);
 			}
 		}
@@ -92,7 +93,7 @@ public class WikiSearch {
 	 * @return New WikiSearch object.
 	 */
 	public WikiSearch minus(WikiSearch that) {
-		Map<String, Integer> difference = new HashMap<String, Integer>(map);
+		Map<String, Double> difference = new HashMap<String, Double>(map);
 		for (String term: that.map.keySet()) {
 			difference.remove(term);
 		}
@@ -106,7 +107,7 @@ public class WikiSearch {
 	 * @param rel2: relevance score for the second search
 	 * @return
 	 */
-	protected int totalRelevance(Integer rel1, Integer rel2) {
+	protected double totalRelevance(Double rel1, Double rel2) {
 		// simple starting place: relevance is the sum of the term frequencies.
 		return rel1 + rel2;
 	}
@@ -116,18 +117,18 @@ public class WikiSearch {
 	 * 
 	 * @return List of entries with URL and relevance.
 	 */
-	public List<Entry<String, Integer>> sort() {
+	public List<Entry<String, Double>> sort() {
 		// NOTE: this can be done more concisely in Java 8.  See
 		// http://stackoverflow.com/questions/109383/sort-a-mapkey-value-by-values-java
 
 		// make a list of entries
-		List<Entry<String, Integer>> entries = 
-				new LinkedList<Entry<String, Integer>>(map.entrySet());
+		List<Entry<String, Double>> entries = 
+				new LinkedList<Entry<String, Double>>(map.entrySet());
 		
 		// make a Comparator object for sorting
-		Comparator<Entry<String, Integer>> comparator = new Comparator<Entry<String, Integer>>() {
+		Comparator<Entry<String, Double>> comparator = new Comparator<Entry<String, Double>>() {
             @Override
-            public int compare(Entry<String, Integer> e1, Entry<String, Integer> e2) {
+            public int compare(Entry<String, Double> e1, Entry<String, Double> e2) {
                 return e1.getValue().compareTo(e2.getValue());
             }
         };
@@ -147,8 +148,18 @@ public class WikiSearch {
 	 */
 	public static WikiSearch search(String term, JedisIndex index) {
 		Map<String, Integer> map = index.getCounts(term);
-		return new WikiSearch(map);
+		Map<String, Double> newMap = new HashMap<String, Double>();
+
+		Set<String> termURLs = index.getURLs(term);
+		double docsContainingTerm = termURLs.size();
+		double totalNumDocuments = index.getNumDocuments();
+		double idf = Math.log10(totalNumDocuments / docsContainingTerm); 
+		for(String s : map.keySet()){
+			newMap.put(s, map.get(s) * idf);
+		}
+		return new WikiSearch(newMap);
 	}
+
 
 	public static void main(String[] args) throws IOException {
 		
