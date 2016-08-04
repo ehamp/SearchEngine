@@ -37,9 +37,11 @@ public class WikiSearch {
 	 * @param url
 	 * @return
 	 */
-	public Double getRelevance(String url) {
-		Double relevance = map.get(url);
-		return relevance==null ? 0: relevance;
+	public double getRelevance(String url) {
+		if(map.get(url) == null){
+			return 0;
+		}
+		return (double) map.get(url);
 	}
 	
 	/**
@@ -107,9 +109,10 @@ public class WikiSearch {
 	 * @param rel2: relevance score for the second search
 	 * @return
 	 */
-	protected double totalRelevance(Double rel1, Double rel2) {
+	protected double totalRelevance(double rel1, double rel2) {
 		// simple starting place: relevance is the sum of the term frequencies.
-		return rel1 + rel2;
+		double r = rel1 + rel2;
+		return r;
 	}
 
 	/**
@@ -155,7 +158,7 @@ public class WikiSearch {
 		double totalNumDocuments = index.getNumDocuments();
 		double idf = Math.log10(totalNumDocuments / docsContainingTerm); 
 		for(String s : map.keySet()){
-			newMap.put(s, map.get(s) * idf);
+			newMap.put(s, ((double) map.get(s)) * idf);
 		}
 		return new WikiSearch(newMap);
 	}
