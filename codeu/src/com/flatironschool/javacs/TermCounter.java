@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.HashSet;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
@@ -20,10 +23,23 @@ public class TermCounter {
 	
 	private Map<String, Integer> map;
 	private String label;
+	private HashSet<String> stopwords;
 	
 	public TermCounter(String label) {
 		this.label = label;
 		this.map = new HashMap<String, Integer>();
+		this.stopwords = new HashSet<String>();
+		try {
+            BufferedReader reader = new BufferedReader(new FileReader("stopwords.txt"));
+            while(reader.readLine() != null) {
+				String word = reader.readLine();
+                stopwords.add(word);
+            }   
+            reader.close();         
+        }
+        catch(Exception e) {
+            System.out.println("error in reader");                
+        }
 	}
 	
 	public String getLabel() {
@@ -80,7 +96,12 @@ public class TermCounter {
 		
 		for (int i=0; i<array.length; i++) {
 			String term = array[i];
-			incrementTermCount(term);
+			if(!stopwords.contains(term)){
+				incrementTermCount(term);
+			}
+			else{
+				continue;
+			}
 		}
 	}
 
