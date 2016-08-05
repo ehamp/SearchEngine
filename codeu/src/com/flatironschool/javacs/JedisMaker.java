@@ -24,62 +24,17 @@ public class JedisMaker {
 	 */
 	public static Jedis make() throws IOException {
 
-
-		// assemble the directory name
-		String slash = File.separator;
-		String filename = "resources" + slash + "redis_url.txt";
-		URL fileURL = JedisMaker.class.getClassLoader().getResource(filename);
-                String filepath = URLDecoder.decode(fileURL.getFile(), "UTF-8");
-
-                StringBuilder sb = new StringBuilder();
-		BufferedReader br;
-		try {
-			br = new BufferedReader(new FileReader(filepath));
-		} catch (FileNotFoundException e1) {
-			System.out.println("File not found: " + filename);
-			printInstructions();
-			return null;
-		}
-
-		while (true) {
-			String line = br.readLine();
-			if (line == null) break;
-			sb.append(line);
-		}
-		br.close();
-
-		URI uri;
-		try {
-			uri = new URI(sb.toString());
-		} catch (URISyntaxException e) {
-			System.out.println("Reading file: " + filename);
-			System.out.println("It looks like this file does not contain a valid URI.");
-			printInstructions();
-			return null;
-		}
-		String host = uri.getHost();
-		int port = uri.getPort();
-
-		String[] array = uri.getAuthority().split("[:@]");
-		String auth = array[1];
-
+		String host = "localhost";
+		int port = 6379;
+		//This was simplified because I am using my local hose. Port number is default and not necessary
+		
 		//Here's an older version that read the auth code from an environment variable.
 		//String host = "dory.redistogo.com";
 		//int port = 10534;
 		//String auth = System.getenv("REDISTOGO_AUTH");
 
-		Jedis jedis = new Jedis(host, port);
-
-		try {
-			jedis.auth(auth);
-		} catch (Exception e) {
-			System.out.println("Trying to connect to " + host);
-			System.out.println("on port " + port);
-			System.out.println("with authcode " + auth);
-			System.out.println("Got exception " + e);
-			printInstructions();
-			return null;
-		}
+		Jedis jedis = new Jedis(host);
+		System.out.println(jedis.ping());
 		return jedis;
 	}
 

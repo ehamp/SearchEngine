@@ -70,17 +70,14 @@ public class WikiCrawler {
                 String url = queue.poll();
 		System.out.println("Crawling " + url);
 
-		if (testing==false && index.isIndexed(url)) {
+		if (index.isIndexed(url)) {
 			System.out.println("Already indexed.");
 			return null;
 		}
-		
+		//Simplified since we are not using test case. Can be added back for testing purposes.
 		Elements paragraphs;
-		if (testing) {
-			paragraphs = wf.readWikipedia(url);
-		} else {
-			paragraphs = wf.fetchWikipedia(url);
-		}
+		paragraphs = wf.fetchWikipedia(url);
+
 		index.indexPage(url, paragraphs);
 		queueInternalLinks(paragraphs);		
 		return url;
@@ -106,6 +103,18 @@ public class WikiCrawler {
 	 * @param paragraph
 	 */
 	private void queueInternalLinks(Element paragraph) {
+<<<<<<< HEAD
+		Elements elts = paragraph.select("a[href]");
+		for (Element elt: elts) {
+			String relURL = elt.attr("href");
+			// change based on what is being crawled.
+			if (relURL.contains("nytimes")) {
+				//String absURL = "https://en.wikipedia.org" + relURL;
+				//System.out.println(absURL);
+				queue.offer(relURL);
+			}
+		}
+=======
             //This is for the description
             if(!urlSet.contains(visitedUrl)){
                 String description = "";
@@ -151,6 +160,7 @@ public class WikiCrawler {
                     queue.offer(absURL);
                 }
             }
+>>>>>>> 41a1a6fd32e0b78245c3ac1f54d284aa41d772ba
 	}
 	//Temproray method to test description retrieving
         public void doCrawl()throws IOException{
@@ -176,7 +186,8 @@ public class WikiCrawler {
 		// make a WikiCrawler
 		Jedis jedis = JedisMaker.make();
 		JedisIndex index = new JedisIndex(jedis); 
-		String source = "https://en.wikipedia.org/wiki/Java_(programming_language)";
+		//Anwaar- Changing the Source to specified article.
+		String source = "http://www.nytimes.com/2016/08/03/technology/instagram-stories-snapchat-facebook.html?ref=technology";
 		WikiCrawler wc = new WikiCrawler(source, index);
 		
 		// for testing purposes, load up the queue
@@ -193,8 +204,13 @@ public class WikiCrawler {
 		for (Entry<String, Integer> entry: map.entrySet()) {
 			System.out.println(entry);
 		}
+<<<<<<< HEAD
+		//Anwaar - Use this to Free the index
+		//index.deleteAllKeys();
+=======
                 for(int i = 0; i < 10; i ++){
                     res = wc.crawl(false);
                 }
+>>>>>>> 41a1a6fd32e0b78245c3ac1f54d284aa41d772ba
 	}
 }
