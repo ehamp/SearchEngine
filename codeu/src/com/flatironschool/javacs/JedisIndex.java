@@ -21,6 +21,7 @@ import redis.clients.jedis.Transaction;
 public class JedisIndex {
 
 	private Jedis jedis;
+	private static Integer numDocuments; 
 
 	/**
 	 * Constructor.
@@ -29,8 +30,12 @@ public class JedisIndex {
 	 */
 	public JedisIndex(Jedis jedis) {
 		this.jedis = jedis;
+		numDocuments = 0;
 	}
 	
+	public Integer getNumDocuments(){
+		return numDocuments;
+	}
 	/**
 	 * Returns the Redis key for a given search term.
 	 * 
@@ -87,6 +92,7 @@ public class JedisIndex {
 	 * @param term
 	 * @return Map from URL to count.
 	 */
+
 	public Map<String, Integer> getCounts(String term) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
 		Set<String> urls = getURLs(term);
@@ -149,7 +155,7 @@ public class JedisIndex {
 	 */
 	public void indexPage(String url, Elements paragraphs) {
 		System.out.println("Indexing " + url);
-		
+		numDocuments++;
 		// make a TermCounter and count the terms in the paragraphs
 		TermCounter tc = new TermCounter(url);
 		tc.processElements(paragraphs);

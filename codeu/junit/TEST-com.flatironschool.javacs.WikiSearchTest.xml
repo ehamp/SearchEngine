@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Anwaars-MBP.fios-router.home" name="com.flatironschool.javacs.WikiSearchTest" skipped="0" tests="4" time="0.065" timestamp="2016-08-04T00:38:27">
+<testsuite errors="0" failures="0" hostname="Anwaars-MBP.fios-router.home" name="com.flatironschool.javacs.WikiSearchTest" skipped="0" tests="4" time="0.107" timestamp="2016-08-05T01:44:46">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
     <property name="env.VISUAL" value="subl -w" />
@@ -64,6 +64,7 @@
     <property name="ant.library.dir" value="/usr/local/Cellar/ant/1.9.6/libexec/lib" />
     <property name="junit.output.dir" value="junit" />
     <property name="env.IRBRC" value="/Users/Anwaar/.rvm/rubies/ruby-2.3.0/.irbrc" />
+    <property name="env.JAVA_MAIN_CLASS_20367" value="org.apache.tools.ant.launch.Launcher" />
     <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
     <property name="env.TERM" value="xterm-256color" />
     <property name="sun.io.unicode.encoding" value="UnicodeBig" />
@@ -82,9 +83,9 @@
     <property name="gopherProxySet" value="false" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
     <property name="java.class.path" value="/Users/Anwaar/SearchEngine/codeu/bin:/Users/Anwaar/SearchEngine/codeu/lib/jedis-2.8.0.jar:/Users/Anwaar/SearchEngine/codeu/lib/jsoup-1.8.3.jar:/Users/Anwaar/SearchEngine/codeu/lib/junit-4.12.jar:/Users/Anwaar/SearchEngine/codeu/lib/hamcrest-core-1.3.jar:/Users/Anwaar/SearchEngine/codeu/lib/hamcrest-library-1.3.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-launcher.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-junit.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-junit4.jar" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.flatironschool.javacs.WikiSearchTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Anwaar/SearchEngine/codeu/junit/TEST-com.flatironschool.javacs.WikiSearchTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/Anwaar/SearchEngine/codeu/junitvmwatcher2915317002118728877.properties propsfile=/Users/Anwaar/SearchEngine/codeu/junit239318520394154163.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.flatironschool.javacs.WikiSearchTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Anwaar/SearchEngine/codeu/junit/TEST-com.flatironschool.javacs.WikiSearchTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/Anwaar/SearchEngine/codeu/junitvmwatcher8156354828806897399.properties propsfile=/Users/Anwaar/SearchEngine/codeu/junit1109086121258604632.properties" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.6 compiled on June 29 2015" />
-    <property name="env.TERM_SESSION_ID" value="59C7894E-AF59-4188-88E6-6C517F6B4DF7" />
+    <property name="env.TERM_SESSION_ID" value="D47D2404-939D-4100-8DAD-CF6F52F5BD7B" />
     <property name="env.USR_PATHS" value="/usr/local:/usr/local/bin:/usr/local/sbin:/usr/bin" />
     <property name="ant.file.type.JavaCS" value="file" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
@@ -109,7 +110,6 @@
     <property name="ant.core.lib" value="/usr/local/Cellar/ant/1.9.6/libexec/lib/ant.jar" />
     <property name="source" value="1.7" />
     <property name="file.encoding" value="UTF-8" />
-    <property name="env.JAVA_MAIN_CLASS_19266" value="org.apache.tools.ant.launch.Launcher" />
     <property name="java.specification.version" value="1.8" />
     <property name="env.GIT_EDITOR" value="subl -w" />
     <property name="ant.project.invoked-targets" value="test" />
@@ -117,8 +117,8 @@
   </properties>
   <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testAnd" time="0.005" />
   <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testMinus" time="0.0" />
-  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testSort" time="0.001" />
-  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testOr" time="0.0" />
+  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testSort" time="0.0" />
+  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testOr" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
