@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Elizabeths-MacBook-Pro-4.local" name="com.flatironschool.javacs.WikiSearchTest" skipped="0" tests="4" time="0.353" timestamp="2016-07-27T06:05:00">
+<testsuite errors="0" failures="0" hostname="Anwaars-MBP.fios-router.home" name="com.flatironschool.javacs.WikiSearchTest" skipped="0" tests="4" time="0.107" timestamp="2016-08-05T01:44:46">
   <properties>
     <property name="java.vendor" value="Oracle Corporation" />
+    <property name="env.VISUAL" value="subl -w" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="env.XPC_SERVICE_NAME" value="0" />
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
     <property name="env._system_arch" value="x86_64" />
-    <property name="env.GEM_HOME" value="/Users/ElizabethHamp/.rvm/gems/ruby-2.3.0" />
+    <property name="env.GEM_HOME" value="/Users/Anwaar/.rvm/gems/ruby-2.3.0" />
     <property name="os.name" value="Mac OS X" />
     <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/classes" />
-    <property name="env.TMPDIR" value="/var/folders/4h/0dhqr9qs28j891hdsxnp6mfm0000gn/T/" />
-    <property name="env.PWD" value="/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12" />
+    <property name="env.TMPDIR" value="/var/folders/9h/cwk22syj6m30hpcfbdl8_3lr0000gn/T/" />
+    <property name="env.PWD" value="/Users/Anwaar/SearchEngine/codeu" />
     <property name="env.LANG" value="en_US.UTF-8" />
     <property name="java.vm.specification.vendor" value="Oracle Corporation" />
     <property name="ant.home" value="/usr/local/Cellar/ant/1.9.6/libexec" />
     <property name="java.runtime.version" value="1.8.0_77-b03" />
-    <property name="env.MY_RUBY_HOME" value="/Users/ElizabethHamp/.rvm/rubies/ruby-2.3.0" />
-    <property name="env.Apple_PubSub_Socket_Render" value="/private/tmp/com.apple.launchd.OTFTgQnxfK/Render" />
-    <property name="env.DISPLAY" value="/private/tmp/com.apple.launchd.S2q4KkSUCl/org.macosforge.xquartz:0" />
-    <property name="env.rvm_version" value="1.27.0 (latest)" />
-    <property name="user.name" value="ElizabethHamp" />
-    <property name="env.USER" value="ElizabethHamp" />
+    <property name="env.MY_RUBY_HOME" value="/Users/Anwaar/.rvm/rubies/ruby-2.3.0" />
+    <property name="env.Apple_PubSub_Socket_Render" value="/private/tmp/com.apple.launchd.9e2QDLMKXf/Render" />
+    <property name="env.DISPLAY" value="/private/tmp/com.apple.launchd.k9siIdo3dZ/org.macosforge.xquartz:0" />
+    <property name="env.rvm_version" value="1.27.0 (master)" />
+    <property name="user.name" value="Anwaar" />
+    <property name="env.USER" value="Anwaar" />
     <property name="env.SHELL" value="/bin/bash" />
     <property name="env.__CF_USER_TEXT_ENCODING" value="0x1F5:0x0:0x0" />
+    <property name="env.NODE_PATH" value="/usr/local/lib/node_modules:" />
     <property name="env._system_type" value="Darwin" />
-    <property name="env.PATH" value="/Users/ElizabethHamp/.rvm/gems/ruby-2.3.0/bin:/Users/ElizabethHamp/.rvm/gems/ruby-2.3.0@global/bin:/Users/ElizabethHamp/.rvm/rubies/ruby-2.3.0/bin:/Library/Frameworks/Python.framework/Versions/2.7/bin:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/Library/Frameworks/Python.framework/Versions/3.4/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/Users/ElizabethHamp/.rvm/bin:/Users/ElizabethHamp/.rvm/bin" />
+    <property name="env.PATH" value="/Users/Anwaar/.rvm/gems/ruby-2.3.0/bin:/Users/Anwaar/.rvm/gems/ruby-2.3.0@global/bin:/Users/Anwaar/.rvm/rubies/ruby-2.3.0/bin:/Applications/Postgres.app/Contents/Versions/9.4/bin:/usr/local:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/local/MacGPG2/bin:/Users/Anwaar/.rvm/bin" />
     <property name="user.language" value="en" />
-    <property name="env.rvm_prefix" value="/Users/ElizabethHamp" />
+    <property name="env.rvm_prefix" value="/Users/Anwaar" />
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib" />
     <property name="ant.project.default-target" value="build" />
     <property name="env.XPC_FLAGS" value="0x0" />
     <property name="ant.project.name" value="JavaCS" />
-    <property name="env.rvm_path" value="/Users/ElizabethHamp/.rvm" />
+    <property name="env.rvm_path" value="/Users/Anwaar/.rvm" />
     <property name="env.RUBY_VERSION" value="ruby-2.3.0" />
     <property name="java.version" value="1.8.0_77" />
     <property name="user.timezone" value="" />
@@ -41,77 +43,82 @@
     <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/endorsed" />
     <property name="sun.cpu.isalist" value="" />
     <property name="sun.jnu.encoding" value="UTF-8" />
-    <property name="env.rvm_bin_path" value="/Users/ElizabethHamp/.rvm/bin" />
+    <property name="env.GIT_MERGE_AUTOEDIT" value="no" />
+    <property name="env.rvm_bin_path" value="/Users/Anwaar/.rvm/bin" />
     <property name="file.encoding.pkg" value="sun.io" />
     <property name="env.SHLVL" value="2" />
     <property name="file.separator" value="/" />
-    <property name="env._system_version" value="10.10" />
+    <property name="env._system_version" value="10.11" />
     <property name="java.specification.name" value="Java Platform API Specification" />
     <property name="java.class.version" value="52.0" />
     <property name="user.country" value="US" />
-    <property name="ant.file.JavaCS" value="/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/build.xml" />
+    <property name="ant.file.JavaCS" value="/Users/Anwaar/SearchEngine/codeu/build.xml" />
     <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre" />
     <property name="java.vm.info" value="mixed mode" />
-    <property name="env.LOGNAME" value="ElizabethHamp" />
-    <property name="ant.file" value="/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/build.xml" />
-    <property name="os.version" value="10.10.5" />
-    <property name="env.TERM_PROGRAM_VERSION" value="343.7" />
+    <property name="env.LOGNAME" value="Anwaar" />
+    <property name="ant.file" value="/Users/Anwaar/SearchEngine/codeu/build.xml" />
+    <property name="os.version" value="10.11.3" />
+    <property name="env.TERM_PROGRAM_VERSION" value="361.1" />
     <property name="path.separator" value=":" />
     <property name="java.vm.version" value="25.77-b03" />
     <property name="ant.library.dir" value="/usr/local/Cellar/ant/1.9.6/libexec/lib" />
     <property name="junit.output.dir" value="junit" />
-    <property name="env.IRBRC" value="/Users/ElizabethHamp/.rvm/rubies/ruby-2.3.0/.irbrc" />
+    <property name="env.IRBRC" value="/Users/Anwaar/.rvm/rubies/ruby-2.3.0/.irbrc" />
+    <property name="env.JAVA_MAIN_CLASS_20367" value="org.apache.tools.ant.launch.Launcher" />
     <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob" />
     <property name="env.TERM" value="xterm-256color" />
     <property name="sun.io.unicode.encoding" value="UnicodeBig" />
     <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit" />
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16" />
-    <property name="env.GEM_PATH" value="/Users/ElizabethHamp/.rvm/gems/ruby-2.3.0:/Users/ElizabethHamp/.rvm/gems/ruby-2.3.0@global" />
-    <property name="user.home" value="/Users/ElizabethHamp" />
+    <property name="env.GEM_PATH" value="/Users/Anwaar/.rvm/gems/ruby-2.3.0:/Users/Anwaar/.rvm/gems/ruby-2.3.0@global" />
     <property name="target" value="1.7" />
+    <property name="user.home" value="/Users/Anwaar" />
     <property name="java.specification.vendor" value="Oracle Corporation" />
     <property name="env.TERM_PROGRAM" value="Apple_Terminal" />
     <property name="java.vendor.url" value="http://java.oracle.com/" />
-    <property name="java.library.path" value="/Users/ElizabethHamp/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
-    <property name="gopherProxySet" value="false" />
+    <property name="java.library.path" value="/Users/Anwaar/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:." />
+    <property name="env.SVN_EDITOR" value="subl -w" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
+    <property name="gopherProxySet" value="false" />
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="java.class.path" value="/Users/Anwaar/SearchEngine/codeu/bin:/Users/Anwaar/SearchEngine/codeu/lib/jedis-2.8.0.jar:/Users/Anwaar/SearchEngine/codeu/lib/jsoup-1.8.3.jar:/Users/Anwaar/SearchEngine/codeu/lib/junit-4.12.jar:/Users/Anwaar/SearchEngine/codeu/lib/hamcrest-core-1.3.jar:/Users/Anwaar/SearchEngine/codeu/lib/hamcrest-library-1.3.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-launcher.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-junit.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-junit4.jar" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.flatironschool.javacs.WikiSearchTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/Anwaar/SearchEngine/codeu/junit/TEST-com.flatironschool.javacs.WikiSearchTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/Anwaar/SearchEngine/codeu/junitvmwatcher8156354828806897399.properties propsfile=/Users/Anwaar/SearchEngine/codeu/junit1109086121258604632.properties" />
     <property name="ant.version" value="Apache Ant(TM) version 1.9.6 compiled on June 29 2015" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner com.flatironschool.javacs.WikiSearchTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/junit/TEST-com.flatironschool.javacs.WikiSearchTest.xml formatter=org.apache.tools.ant.taskdefs.optional.junit.PlainJUnitResultFormatter crashfile=/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/junitvmwatcher5922365100810255835.properties propsfile=/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/junit6542515143009385143.properties" />
-    <property name="java.class.path" value="/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/bin:/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/lib/jedis-2.8.0.jar:/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/lib/jsoup-1.8.3.jar:/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/lib/junit-4.12.jar:/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/lib/hamcrest-core-1.3.jar:/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12/lib/hamcrest-library-1.3.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-launcher.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-junit.jar:/usr/local/Cellar/ant/1.9.6/libexec/lib/ant-junit4.jar" />
-    <property name="env.TERM_SESSION_ID" value="8A068519-ADB3-489C-AC79-C5543B71D504" />
+    <property name="env.TERM_SESSION_ID" value="D47D2404-939D-4100-8DAD-CF6F52F5BD7B" />
+    <property name="env.USR_PATHS" value="/usr/local:/usr/local/bin:/usr/local/sbin:/usr/bin" />
     <property name="ant.file.type.JavaCS" value="file" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
     <property name="ant.file.type" value="file" />
     <property name="java.vm.specification.version" value="1.8" />
-    <property name="sun.cpu.endian" value="little" />
     <property name="sun.os.patch.level" value="unknown" />
+    <property name="sun.cpu.endian" value="little" />
     <property name="debuglevel" value="source,lines,vars" />
-    <property name="env.HOME" value="/Users/ElizabethHamp" />
-    <property name="java.io.tmpdir" value="/var/folders/4h/0dhqr9qs28j891hdsxnp6mfm0000gn/T/" />
+    <property name="env.HOME" value="/Users/Anwaar" />
+    <property name="java.io.tmpdir" value="/var/folders/9h/cwk22syj6m30hpcfbdl8_3lr0000gn/T/" />
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/" />
-    <property name="env.SSH_AUTH_SOCK" value="/private/tmp/com.apple.launchd.BpUK0OfVbw/Listeners" />
+    <property name="env.SSH_AUTH_SOCK" value="/private/tmp/com.apple.launchd.A9nuxf6GK9/Listeners" />
     <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment" />
     <property name="os.arch" value="x86_64" />
-    <property name="java.ext.dirs" value="/Users/ElizabethHamp/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
-    <property name="user.dir" value="/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12" />
+    <property name="java.ext.dirs" value="/Users/Anwaar/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_77.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="user.dir" value="/Users/Anwaar/SearchEngine/codeu" />
     <property name="line.separator" value="&#xa;" />
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
-    <property name="basedir" value="/Users/ElizabethHamp/Documents/CodeU/SearchEngine/javacs-lab12" />
+    <property name="env.EDITOR" value="subl -w" />
+    <property name="basedir" value="/Users/Anwaar/SearchEngine/codeu" />
     <property name="ant.java.version" value="1.8" />
     <property name="ant.core.lib" value="/usr/local/Cellar/ant/1.9.6/libexec/lib/ant.jar" />
     <property name="source" value="1.7" />
     <property name="file.encoding" value="UTF-8" />
-    <property name="env.GPG_AGENT_INFO" value="/private/tmp/com.apple.launchd.uqzen7RE10/Listeners_agent" />
     <property name="java.specification.version" value="1.8" />
-    <property name="env.JAVA_MAIN_CLASS_34627" value="org.apache.tools.ant.launch.Launcher" />
+    <property name="env.GIT_EDITOR" value="subl -w" />
     <property name="ant.project.invoked-targets" value="test" />
+    <property name="env.FLATIRON_VERSION" value="1.1.1" />
   </properties>
-  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testAnd" time="0.004" />
-  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testMinus" time="0.001" />
+  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testAnd" time="0.005" />
+  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testMinus" time="0.0" />
   <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testSort" time="0.0" />
-  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testOr" time="0.0" />
+  <testcase classname="com.flatironschool.javacs.WikiSearchTest" name="testOr" time="0.001" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
