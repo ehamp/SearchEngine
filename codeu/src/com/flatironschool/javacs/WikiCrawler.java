@@ -70,6 +70,7 @@ public class WikiCrawler {
 			paragraphs = wf.readWikipedia(url);
 		} else {
 			paragraphs = wf.fetchWikipedia(url);
+			wf.fetchWikipediaPic(url);
 		}
 		index.indexPage(url, paragraphs);
 		queueInternalLinks(paragraphs);		

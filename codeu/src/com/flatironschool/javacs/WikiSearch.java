@@ -155,9 +155,14 @@ public class WikiSearch {
 
 		Set<String> termURLs = index.getURLs(term);
 		double docsContainingTerm = termURLs.size();
+		//System.out.println("docsContianingTerm: " + docsContainingTerm);
 		double totalNumDocuments = index.getNumDocuments();
+		//System.out.println("total Num Documents: " + totalNumDocuments);
 		double idf = Math.log10(totalNumDocuments / docsContainingTerm); 
+		idf = Math.abs(idf);
 		for(String s : map.keySet()){
+			//System.out.println((double)map.get(s));
+			System.out.println(idf);
 			newMap.put(s, ((double) map.get(s)) * idf);
 		}
 		return new WikiSearch(newMap);
