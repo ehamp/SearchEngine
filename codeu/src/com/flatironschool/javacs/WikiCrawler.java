@@ -103,7 +103,6 @@ public class WikiCrawler {
 	 * @param paragraph
 	 */
 	private void queueInternalLinks(Element paragraph) {
-<<<<<<< HEAD
 		Elements elts = paragraph.select("a[href]");
 		for (Element elt: elts) {
 			String relURL = elt.attr("href");
@@ -114,7 +113,6 @@ public class WikiCrawler {
 				queue.offer(relURL);
 			}
 		}
-=======
             //This is for the description
             if(!urlSet.contains(visitedUrl)){
                 String description = "";
@@ -160,7 +158,6 @@ public class WikiCrawler {
                     queue.offer(absURL);
                 }
             }
->>>>>>> 41a1a6fd32e0b78245c3ac1f54d284aa41d772ba
 	}
 	//Temproray method to test description retrieving
         public void doCrawl()throws IOException{
@@ -204,13 +201,10 @@ public class WikiCrawler {
 		for (Entry<String, Integer> entry: map.entrySet()) {
 			System.out.println(entry);
 		}
-<<<<<<< HEAD
 		//Anwaar - Use this to Free the index
 		//index.deleteAllKeys();
-=======
                 for(int i = 0; i < 10; i ++){
                     res = wc.crawl(false);
                 }
->>>>>>> 41a1a6fd32e0b78245c3ac1f54d284aa41d772ba
 	}
 }
