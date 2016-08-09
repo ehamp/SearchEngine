@@ -1,4 +1,4 @@
-package com.flatironschool.javacs;
+package searchenginecli;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,8 +31,7 @@ public class WikiFetcher {
 		Document doc = conn.get();
 
 		// select the content text and pull out the paragraphs.
-		//Anwaar - Change id to "mw-content-text" for wiki pages. 
-		Element content = doc.getElementById("main");
+		Element content = doc.getElementById("mw-content-text");
 
 		// TODO: avoid selecting paragraphs from sidebars and boxouts
 		Elements paras = content.select("p");
@@ -52,10 +51,11 @@ public class WikiFetcher {
 		// assemble the file name
 		String slash = File.separator;
 		String filename = "resources" + slash + realURL.getHost() + realURL.getPath();
-
+                Connection conn = Jsoup.connect(url);
+		Document doc = conn.get();
 		// read the file
-		InputStream stream = WikiFetcher.class.getClassLoader().getResourceAsStream(filename);
-		Document doc = Jsoup.parse(stream, "UTF-8", filename);
+		//InputStream stream = WikiFetcher.class.getClassLoader().getResourceAsStream(filename);
+		//Document doc = Jsoup.parse(stream, "UTF-8", filename);
 
 		// TODO: factor out the following repeated code
 		Element content = doc.getElementById("mw-content-text");

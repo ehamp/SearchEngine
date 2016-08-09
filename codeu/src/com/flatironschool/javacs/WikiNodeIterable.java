@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.flatironschool.javacs;
+package searchenginecli;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;

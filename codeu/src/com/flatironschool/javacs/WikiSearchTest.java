@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.flatironschool.javacs;
+package searchenginecli;
 
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.*;
