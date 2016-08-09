@@ -21,7 +21,7 @@ import redis.clients.jedis.Transaction;
 public class JedisIndex {
 
 	private Jedis jedis;
-	private static Integer numDocuments; 
+	private static double numDocuments = 0.0; 
 
 	/**
 	 * Constructor.
@@ -30,10 +30,9 @@ public class JedisIndex {
 	 */
 	public JedisIndex(Jedis jedis) {
 		this.jedis = jedis;
-		numDocuments = 0;
 	}
 	
-	public Integer getNumDocuments(){
+	public double getNumDocuments(){
 		return numDocuments;
 	}
 	/**
@@ -155,7 +154,7 @@ public class JedisIndex {
 	 */
 	public void indexPage(String url, Elements paragraphs) {
 		System.out.println("Indexing " + url);
-		numDocuments++;
+		numDocuments = numDocuments + 1.0;
 		// make a TermCounter and count the terms in the paragraphs
 		TermCounter tc = new TermCounter(url);
 		tc.processElements(paragraphs);
@@ -163,6 +162,16 @@ public class JedisIndex {
 		// push the contents of the TermCounter to Redis
 		pushTermCounterToRedis(tc);
 	}
+
+	public void indexPicture(String url, String picUrl) {
+		
+		//TermCounter tc = new TermCounter(url);
+		//tc.processElements(paragraphs);
+		
+		// push the contents of the TermCounter to Redis
+		//pushTermCounterToRedis(tc);
+	}
+
 
 	/**
 	 * Pushes the contents of the TermCounter to Redis.

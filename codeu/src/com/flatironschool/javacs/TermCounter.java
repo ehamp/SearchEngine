@@ -24,6 +24,9 @@ public class TermCounter {
 	private Map<String, Integer> map;
 	private String label;
 	private HashSet<String> stopwords;
+	private String picture;
+
+
 	
 	public TermCounter(String label) {
 		this.label = label;
@@ -38,6 +41,7 @@ public class TermCounter {
             reader.close();         
         }
         catch(Exception e) {
+        	System.out.println(e);
             System.out.println("error in reader");                
         }
 	}
