@@ -56,6 +56,11 @@ public class WikiSearch {
 		}
 	}
 	
+	public List<Entry<String, Double>> getList(){
+		List<Entry<String, Double>> entries = sort();
+		return entries;
+	}
+
 	/**
 	 * Computes the union of two search results.
 	 * 
