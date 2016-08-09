@@ -1,4 +1,6 @@
-package com.flatironschool.javacs;
+package codeu.src.com.flatironschool.javacs;
+
+
 import java.awt.Desktop;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -56,31 +58,37 @@ public class SearchEngineCLI extends Application {
         
         setUpParser();
         
-        BackgroundFill bgf = new BackgroundFill(Paint.valueOf("white"), CornerRadii.EMPTY, Insets.EMPTY );
+        BackgroundFill bgf = new BackgroundFill(Paint.valueOf("black"), CornerRadii.EMPTY, Insets.EMPTY);
         Background bg = new Background(bgf);
         box = new VBox();
         box.setAlignment(Pos.TOP_CENTER);
         box.setBackground(bg);
-        commandTextField = new TextField();
-        BackgroundFill bgf1 = new BackgroundFill(Paint.valueOf("gray"), CornerRadii.EMPTY, Insets.EMPTY );
+        box.setMinHeight(1000);
+        
+        BackgroundFill bgf1 = new BackgroundFill(Paint.valueOf("#272822"), CornerRadii.EMPTY, Insets.EMPTY );
         Background bg1 = new Background(bgf1);
+        commandTextField = new TextField();
         commandTextField.setBackground(bg1);
-        commandTextField.setStyle("-fx-text-fill: cyan;");
+        commandTextField.setStyle("-fx-text-fill: #66D9EF;");
         setUpCommands();
+        
         sp = new ScrollPane();
-        //box.getChildren().add(sp);
+        sp.setBackground(bg);
+        sp.setMaxHeight(680);
+        sp.setFitToWidth(true);
+        sp.setContent(box);
         
         root = new StackPane();
         root.getChildren().add(sp);
         root.getChildren().add(commandTextField);
         root.setAlignment(commandTextField, Pos.BOTTOM_CENTER);
+        root.setAlignment(sp, Pos.TOP_CENTER);
         
-        scene = new Scene(root, 900, 750);
+        scene = new Scene(root, 890, 750);
         
         primaryStage.setTitle("Search Engine");
         primaryStage.setScene(scene);
         primaryStage.show();
-        
         
     }
     
@@ -101,7 +109,6 @@ public class SearchEngineCLI extends Application {
         parser.accepts("minus", "difference of terms");
         parser.accepts("clear", "clear console");
         parser.accepts("help", "show help").forHelp();
-        parser.posixlyCorrect(true);
     }
     
     public void setUpCommands(){
@@ -153,13 +160,13 @@ public class SearchEngineCLI extends Application {
                     
                     WikiSearch intersection = search1.and(search2);
                     label = new Label("And Results: " + term1 + " " + term2);
-                    label.setStyle("-fx-text-fill: black;");
+                    label.setStyle("-fx-text-fill: #F92672;");
                     box.getChildren().add(label);
                     for(Entry<String, Integer> entry: intersection.getList()){
                         
                         Hyperlink link = new Hyperlink();
                         link.setText(entry.getKey());
-                        
+                        link.setTextFill(Paint.valueOf("#66D9EF"));
                         link.setOnAction((ActionEvent e) -> {
                             openWebpage(entry.getKey());
                         });
@@ -169,13 +176,19 @@ public class SearchEngineCLI extends Application {
                     }
                     
                     if(urlList.isEmpty()){
-                        box.getChildren().add(new Label("No links were found"));
+                        Label lbl = new Label();
+                        lbl.setText("No links were found");
+                        lbl.setStyle("-fx-text-fill: white;");
+                        box.getChildren().add(lbl);
                     }else{
                         Collections.reverse(urlList);
                         Collections.reverse(strUrlList);
                         for(int i = 0; i < urlList.size(); i++){
                             box.getChildren().add(urlList.get(i));
-                            box.getChildren().add(new Label(WikiCrawler.descriptionMap.get(strUrlList.get(i))));
+                            Label lbl = new Label();
+                            lbl.setText(WikiCrawler.descriptionMap.get(strUrlList.get(i)));
+                            lbl.setStyle("-fx-text-fill: white;");
+                            box.getChildren().add(lbl);
                         }
                         
                     }
@@ -186,14 +199,14 @@ public class SearchEngineCLI extends Application {
                     WikiSearch union = search1.or(search2);
 
                     label = new Label("Or Results: " + term1 + " " + term2);
-                    label.setStyle("-fx-text-fill: black;");
+                    label.setStyle("-fx-text-fill: #F92672;");
                     box.getChildren().add(label);
                     
                     for(Entry<String, Integer> entry: union.getList()){
                         
                         Hyperlink link = new Hyperlink();
                         link.setText(entry.getKey());
-                        
+                        link.setTextFill(Paint.valueOf("#66D9EF"));
                         link.setOnAction((ActionEvent e) -> {
                             openWebpage(entry.getKey());
                         });
@@ -203,14 +216,20 @@ public class SearchEngineCLI extends Application {
                     }
                     
                     if(urlList.isEmpty()){
-                        box.getChildren().add(new Label("No links were found"));
+                        Label lbl = new Label();
+                        lbl.setText("No links were found");
+                        lbl.setStyle("-fx-text-fill: white;");
+                        box.getChildren().add(lbl);
                     }else{
                         
                         Collections.reverse(urlList);
                         Collections.reverse(strUrlList);
                         for(int i = 0; i < urlList.size(); i++){
                             box.getChildren().add(urlList.get(i));
-                            box.getChildren().add(new Label(WikiCrawler.descriptionMap.get(strUrlList.get(i))));
+                            Label lbl = new Label();
+                            lbl.setText(WikiCrawler.descriptionMap.get(strUrlList.get(i)));
+                            lbl.setStyle("-fx-text-fill: white;");
+                            box.getChildren().add(lbl);
                         }
                         
                     }
@@ -220,14 +239,14 @@ public class SearchEngineCLI extends Application {
                     WikiSearch difference = search1.minus(search2);
 
                     label = new Label("Minus Results: " + term1 + " " + term2);
-                    label.setStyle("-fx-text-fill: black;");
+                    label.setStyle("-fx-text-fill: #F92672;");
                     box.getChildren().add(label);
                     
                     for(Entry<String, Integer> entry: difference.getList()){
                         
                         Hyperlink link = new Hyperlink();
                         link.setText(entry.getKey());
-                        
+                        link.setTextFill(Paint.valueOf("#66D9EF"));
                         link.setOnAction((ActionEvent e) -> {
                             openWebpage(entry.getKey());
                         });
@@ -237,14 +256,20 @@ public class SearchEngineCLI extends Application {
                     }
                     
                     if(urlList.isEmpty()){
-                        box.getChildren().add(new Label("No links were found"));
+                        Label lbl = new Label();
+                        lbl.setText("No links were found");
+                        lbl.setStyle("-fx-text-fill: white;");
+                        box.getChildren().add(lbl);
                     }else{
                         
                         Collections.reverse(urlList);
                         Collections.reverse(strUrlList);
                         for(int i = 0; i < urlList.size(); i++){
                             box.getChildren().add(urlList.get(i));
-                            box.getChildren().add(new Label(WikiCrawler.descriptionMap.get(strUrlList.get(i))));
+                            Label lbl = new Label();
+                            lbl.setText(WikiCrawler.descriptionMap.get(strUrlList.get(i)));
+                            lbl.setStyle("-fx-text-fill: white;");
+                            box.getChildren().add(lbl);
                         }
                         
                     }
@@ -266,13 +291,15 @@ public class SearchEngineCLI extends Application {
                     System.out.flush();
                     System.setOut(old);
                     label = new Label(baos.toString());
-                    label.setStyle("-fx-text-fill: black;");
+                    label.setStyle("-fx-text-fill: white;");
                     box.getChildren().add(label);
                   }
                 
                 commandTextField.clear();
                 sp.setContent(box);
             }catch(Exception e){
+                commandTextField.clear();
+                box.getChildren().add(new Label("There was an error, please try again"));
                 e.printStackTrace();
             }
         });
@@ -287,3 +314,4 @@ public class SearchEngineCLI extends Application {
     }
     
 }
+
