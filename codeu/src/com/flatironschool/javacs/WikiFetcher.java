@@ -1,4 +1,4 @@
-package com.flatironschool.javacs;
+package CLIapplication.javacs;
 
 import java.io.File;
 import java.io.IOException;
@@ -31,8 +31,9 @@ public class WikiFetcher {
 		Document doc = conn.get();
 
 		// select the content text and pull out the paragraphs.
-		//Anwaar - Change id to "mw-content-text" for wiki pages. 
-		Element content = doc.getElementById("main");
+		//Anwaar - Change id to "main" for NYT pages. 
+		Element content = doc.getElementById("mw-content-text");
+		//Element content = doc.getElementById("main");
 
 		// TODO: avoid selecting paragraphs from sidebars and boxouts
 		Elements paras = content.select("p");

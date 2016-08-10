@@ -1,7 +1,8 @@
-package codeu.src.com.flatironschool.javacs;
+package CLIapplication.javacs;
 
 
 import java.awt.Desktop;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.net.URL;
@@ -12,6 +13,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Scanner;
+import java.util.Set;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -34,7 +37,8 @@ import javafx.stage.Stage;
 import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import redis.clients.jedis.Jedis;
-import static searchenginecli.WikiSearch.search;
+import static CLIapplication.javacs.WikiSearch.search;
+import CLIapplication.javacs.JedisIndex;
 /**
  *
  * @author ajenejohnson
@@ -61,7 +65,7 @@ public class SearchEngineCLI extends Application {
         BackgroundFill bgf = new BackgroundFill(Paint.valueOf("black"), CornerRadii.EMPTY, Insets.EMPTY);
         Background bg = new Background(bgf);
         box = new VBox();
-        box.setAlignment(Pos.TOP_CENTER);
+        //box.setAlignment(Pos.TOP_CENTER);
         box.setBackground(bg);
         box.setMinHeight(1000);
         
@@ -74,7 +78,7 @@ public class SearchEngineCLI extends Application {
         
         sp = new ScrollPane();
         sp.setBackground(bg);
-        sp.setMaxHeight(680);
+        sp.setMaxHeight(725);
         sp.setFitToWidth(true);
         sp.setContent(box);
         
@@ -130,22 +134,25 @@ public class SearchEngineCLI extends Application {
             }catch(IndexOutOfBoundsException e){
                 correctindex = 0;
             }
-            OptionSet options = parser.parse("-"+enteredText.get(correctindex));
+            
             
             try{
-                
+                OptionSet options = parser.parse("-"+enteredText.get(correctindex));
                 Jedis jedis = JedisMaker.make();
                 JedisIndex index = new JedisIndex(jedis);
                 String term1 = "";
                 String term2 = "";
                 //To test description
-                WikiCrawler wc = new WikiCrawler("https://en.wikipedia.org/wiki/Java_(programming_language)",index);
-                wc.doCrawl();
+               // WikiCrawler wc = new WikiCrawler("https://en.wikipedia.org/wiki/Java_(programming_language)",index);
+               // wc.doCrawl();
                 try{
                     term1 = enteredText.get(0);
                     term2 = enteredText.get(2);
                 } catch(IndexOutOfBoundsException e){
-                    
+                    Label lbl = new Label();
+                    lbl.setText("Invalid input");
+                    lbl.setStyle("-fx-text-fill: white;");
+                    box.getChildren().add(lbl);
                 }
                 
                 WikiSearch search1 = null;
@@ -159,10 +166,12 @@ public class SearchEngineCLI extends Application {
                 if(options.has("and")){
                     
                     WikiSearch intersection = search1.and(search2);
+                    Map<String, String> searchAndDescriptions = intersection.getDescriptionsFromRedis(intersection);
+                    
                     label = new Label("And Results: " + term1 + " " + term2);
                     label.setStyle("-fx-text-fill: #F92672;");
                     box.getChildren().add(label);
-                    for(Entry<String, Integer> entry: intersection.getList()){
+                    for(Entry<String, Double> entry: intersection.getList()){
                         
                         Hyperlink link = new Hyperlink();
                         link.setText(entry.getKey());
@@ -175,7 +184,7 @@ public class SearchEngineCLI extends Application {
                         strUrlList.add(entry.getKey());
                     }
                     
-                    if(urlList.isEmpty()){
+                    if(urlList.isEmpty() || !index.termSet().contains(term1) || !index.termSet().contains(term2)){
                         Label lbl = new Label();
                         lbl.setText("No links were found");
                         lbl.setStyle("-fx-text-fill: white;");
@@ -186,7 +195,7 @@ public class SearchEngineCLI extends Application {
                         for(int i = 0; i < urlList.size(); i++){
                             box.getChildren().add(urlList.get(i));
                             Label lbl = new Label();
-                            lbl.setText(WikiCrawler.descriptionMap.get(strUrlList.get(i)));
+                            lbl.setText(searchAndDescriptions.get(strUrlList.get(i)));
                             lbl.setStyle("-fx-text-fill: white;");
                             box.getChildren().add(lbl);
                         }
@@ -197,12 +206,12 @@ public class SearchEngineCLI extends Application {
                 }else if(options.has("or")){
 
                     WikiSearch union = search1.or(search2);
-
+                    Map<String, String> searchUnionDescriptions = union.getDescriptionsFromRedis(union);
                     label = new Label("Or Results: " + term1 + " " + term2);
                     label.setStyle("-fx-text-fill: #F92672;");
                     box.getChildren().add(label);
                     
-                    for(Entry<String, Integer> entry: union.getList()){
+                    for(Entry<String, Double> entry: union.getList()){
                         
                         Hyperlink link = new Hyperlink();
                         link.setText(entry.getKey());
@@ -215,7 +224,7 @@ public class SearchEngineCLI extends Application {
                         strUrlList.add(entry.getKey());
                     }
                     
-                    if(urlList.isEmpty()){
+                    if(urlList.isEmpty() || !index.termSet().contains(term1) || !index.termSet().contains(term2)){
                         Label lbl = new Label();
                         lbl.setText("No links were found");
                         lbl.setStyle("-fx-text-fill: white;");
@@ -227,7 +236,7 @@ public class SearchEngineCLI extends Application {
                         for(int i = 0; i < urlList.size(); i++){
                             box.getChildren().add(urlList.get(i));
                             Label lbl = new Label();
-                            lbl.setText(WikiCrawler.descriptionMap.get(strUrlList.get(i)));
+                            lbl.setText(searchUnionDescriptions.get(strUrlList.get(i)));
                             lbl.setStyle("-fx-text-fill: white;");
                             box.getChildren().add(lbl);
                         }
@@ -237,12 +246,12 @@ public class SearchEngineCLI extends Application {
                 }else if(options.has("minus")){
 
                     WikiSearch difference = search1.minus(search2);
-
+                    Map<String, String> searchMinusDescriptions = difference.getDescriptionsFromRedis(difference);
                     label = new Label("Minus Results: " + term1 + " " + term2);
                     label.setStyle("-fx-text-fill: #F92672;");
                     box.getChildren().add(label);
                     
-                    for(Entry<String, Integer> entry: difference.getList()){
+                    for(Entry<String, Double> entry: difference.getList()){
                         
                         Hyperlink link = new Hyperlink();
                         link.setText(entry.getKey());
@@ -255,7 +264,7 @@ public class SearchEngineCLI extends Application {
                         strUrlList.add(entry.getKey());
                     }
                     
-                    if(urlList.isEmpty()){
+                    if(urlList.isEmpty() || !index.termSet().contains(term1) || !index.termSet().contains(term2)){
                         Label lbl = new Label();
                         lbl.setText("No links were found");
                         lbl.setStyle("-fx-text-fill: white;");
@@ -267,7 +276,7 @@ public class SearchEngineCLI extends Application {
                         for(int i = 0; i < urlList.size(); i++){
                             box.getChildren().add(urlList.get(i));
                             Label lbl = new Label();
-                            lbl.setText(WikiCrawler.descriptionMap.get(strUrlList.get(i)));
+                            lbl.setText(searchMinusDescriptions.get(strUrlList.get(i)));
                             lbl.setStyle("-fx-text-fill: white;");
                             box.getChildren().add(lbl);
                         }
@@ -299,7 +308,9 @@ public class SearchEngineCLI extends Application {
                 sp.setContent(box);
             }catch(Exception e){
                 commandTextField.clear();
-                box.getChildren().add(new Label("There was an error, please try again"));
+                Label lbl = new Label("There was an error, please try again");
+                lbl.setStyle("-fx-text-fill: white;");
+                box.getChildren().add(lbl);
                 e.printStackTrace();
             }
         });

@@ -1,4 +1,4 @@
-package com.flatironschool.javacs;
+package CLIapplication.javacs;
 
 import java.io.IOException;
 import java.util.Collections;
@@ -21,6 +21,7 @@ public class WikiSearch {
 	
 	// map from URLs that contain the term(s) to relevance score
 	private Map<String, Double> map;
+	private static JedisIndex currentIndex;
 
 	/**
 	 * Constructor.
@@ -157,6 +158,7 @@ public class WikiSearch {
 	public static WikiSearch search(String term, JedisIndex index) {
 		Map<String, Integer> map = index.getCounts(term);
 		Map<String, Double> newMap = new HashMap<String, Double>();
+		currentIndex = index;
 
 		Set<String> termURLs = index.getURLs(term);
 		double docsContainingTerm = termURLs.size();
@@ -172,7 +174,11 @@ public class WikiSearch {
 		}
 		return new WikiSearch(newMap);
 	}
-
+	
+	public Map<String, String> getDescriptionsFromRedis(WikiSearch w){
+		Map<String, String> descriptions = currentIndex.getDescription(w.map.keySet());		
+		return descriptions;
+	}
 
 	public static void main(String[] args) throws IOException {
 		
